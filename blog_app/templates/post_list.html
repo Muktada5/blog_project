@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>All Blog Posts</h1>
+    <a href="{% url 'add_post' %}">Add a New Post</a>
+    <hr>
+    {% if posts %}
+        <ul>
+          {% for post in posts %}
+            <li>
+              <h2>{{ post.title }}</h2>
+              <p><strong>Published on:</strong> {{ post.published_date }}</p>
+              <p>{{ post.content }}</p>
+            </li>
+            <hr>
+          {% endfor %}
+        </ul>
+    {% else %}
+        <p>No blog posts have been published yet.</p>
+    {% endif %}
+</body>
+</html>
